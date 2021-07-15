@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { ScrollView, Text, TouchableOpacity } from 'react-native'
 
-import Deck from './Deck'
+import Deck from '../components/Deck'
 
 class Decks extends Component{
   render(){
