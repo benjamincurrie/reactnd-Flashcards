@@ -1,5 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, StatusBar } from 'react-native'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
@@ -8,6 +10,8 @@ import { NavigationContainer } from '@react-navigation/native'
 
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import { white, purple } from './utils/colors' 
+
+import reducer from './reducers'
 
 import AddCard from './screens/AddCard'
 import AddDeck from './screens/AddDeck'
@@ -90,11 +94,13 @@ const MainNav = () => (
 
 export default function App() {
   return (
-    <View style={{flex: 1}}>
-      <NavigationContainer>
-        <FlashcardsStatusBar style="auto" />
-        <MainNav/>
-      </NavigationContainer>
-    </View>
+    <Provider store={createStore(reducer)}>
+      <View style={{flex: 1}}>
+        <NavigationContainer>
+          <FlashcardsStatusBar style="auto" />
+          <MainNav/>
+        </NavigationContainer>
+      </View>
+    </Provider>
   );
 }
