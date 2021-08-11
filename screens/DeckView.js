@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import globalStyles from '../utils/styles'
 import { purple, white, gray, orange, red } from '../utils/colors'
 import Button from '../components/Button'
+import { removeDeck } from '../actions'
+import { deleteDeck } from '../utils/api'
 
 class DeckView extends Component {
 
@@ -11,6 +13,13 @@ class DeckView extends Component {
     this.props.navigation.setOptions({
         title: this.props.name
     })
+  }
+
+  delete = () => {
+    deleteDeck(this.props.id)
+    this.props.dispatch(removeDeck(this.props.id))
+    
+    this.props.navigation.navigate("Decks")
   }
 
   render(){
@@ -33,9 +42,9 @@ class DeckView extends Component {
         )} disabled= { cards.length === 0 ? true : false } style={{marginBottom: 16}}>
           Take Quiz
         </Button>
-        <Button onPress={this.deleteDeck} type='text' color={red}>
+        {/* <Button onPress={this.delete} type='text' color={red}>
           Delete Deck
-        </Button>
+        </Button> */}
       </View>
 
     )

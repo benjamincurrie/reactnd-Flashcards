@@ -19,14 +19,11 @@ class Decks extends Component {
   }
   clear = () => {
     resetDecks()
-      .then(() =>{
-        fetchDecks()
-          .then((decks) =>{
-            this.props.dispatch(receiveDecks({decks}));
-          })
+      .then((decks) =>{
+        this.props.dispatch(receiveDecks({decks}));
       })
   }
-  render(){
+  render() {
     const { decks } = this.props;
     return(
       <ScrollView style={globalStyles.container}>

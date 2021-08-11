@@ -42,22 +42,33 @@ const sampleData = {
 
 export function fetchDecks () {
   return AsyncStorage.getItem(STORAGE_KEY)
-    .then(results => {
-      if (results === null) {
+    .then(decks => {
+      if (decks === null) {
         AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(sampleData))
         return sampleData
       } else {
-        return JSON.parse(results)
+        return JSON.parse(decks)
       }
     });
 }
 
 export function resetDecks () {
   return AsyncStorage.removeItem(STORAGE_KEY)
+    .then(() => {
+      return fetchDecks()
+    })
 }
 
 export function saveDeck(deck) {
   return AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({[deck.name]: deck}))
+}
+
+export function deleteDeck(id) {
+  return fetchDecks()
+    .then(decks => {
+      delete decks[id]
+      return AsyncStorage.setItem(DECK_STORAGE, JSON.stringify(decks))
+    })
 }
 
 export function addCard({ card, id }) {
@@ -70,8 +81,8 @@ export function addCard({ card, id }) {
       }
     })
     .then((deck) =>{
-      AsyncStorage.mergeItem(DECK_STORAGE, JSON.stringify({[id]: deck}));
-    });
+      AsyncStorage.mergeItem(DECK_STORAGE, JSON.stringify({[id]: deck}))
+    })
 }
 
 // export function removeDeck() {
