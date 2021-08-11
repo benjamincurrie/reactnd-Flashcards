@@ -18,10 +18,10 @@ class AddCard extends Component{
   }
 
   handleQuestionChange = (question) => {
-    this.setState({ question });
+    this.setState({ question })
   }
   handleAnswerChange = (answer) => {
-    this.setState({ answer });
+    this.setState({ answer })
   }
   
   submit = () => {

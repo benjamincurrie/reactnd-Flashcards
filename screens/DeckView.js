@@ -7,15 +7,14 @@ import Button from '../components/Button'
 
 class DeckView extends Component {
 
-  setHeaderTitle = (title) =>{
+  componentDidMount() {
     this.props.navigation.setOptions({
-        title: title
+        title: this.props.name
     })
   }
 
   render(){
     const { id, name, cards, navigation } = this.props;
-    this.setHeaderTitle(name)
     
     return(
       <View style={globalStyles.container}>
@@ -31,7 +30,7 @@ class DeckView extends Component {
         <Button onPress={() => navigation.navigate(
           'Quiz',
           {id: id}
-        )} disabled= { cards.length === 0 ? true : false }  style={{marginBottom: 16}}>
+        )} disabled= { cards.length === 0 ? true : false } style={{marginBottom: 16}}>
           Take Quiz
         </Button>
         <Button onPress={this.deleteDeck} type='text' color={red}>

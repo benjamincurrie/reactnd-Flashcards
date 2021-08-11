@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, TouchableOpacity, Text } from 'react-native'
-import { purple, white, gray, orange } from '../utils/colors';
+import { purple, white, gray } from '../utils/colors'
 
 const Button = ({ children, onPress, type='primary', disabled, color=purple, style }) => {
   var typeStyles

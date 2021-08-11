@@ -36,9 +36,9 @@ class AddDeck extends Component {
     return(
       <View style={globalStyles.container}>
         <Text style={globalStyles.h1}>Add Deck</Text>
-        <Text style={styles.label}>What is the title of your new deck?</Text>
+        <Text style={globalStyles.label}>What is the title of your new deck?</Text>
         <TextInput
-          style={styles.input}
+          style={globalStyles.input}
           onChangeText={this.handleNameChange}
           value={this.state.name}
         />
@@ -47,23 +47,5 @@ class AddDeck extends Component {
     );
   };
 };
-
-
-const styles = StyleSheet.create({
-  label: {
-    fontSize: 16,
-    fontWeight: '600',
-    paddingBottom: 4
-  },
-  input: {
-    margin: 12,
-    borderWidth: 1,
-    borderRadius: 4,
-    borderColor: '#aaa',
-    padding: 10,
-    margin: 0,
-    marginBottom: 16
-  },
-})
 
 export default connect()(AddDeck)

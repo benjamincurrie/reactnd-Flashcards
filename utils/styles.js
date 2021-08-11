@@ -13,6 +13,17 @@ export default globalStyles = StyleSheet.create({
     fontWeight: '800',
     paddingBottom: 16
   },
+  card: {
+    backgroundColor: white,
+    padding: 16,
+    marginBottom: 16,
+    borderRadius: 8,
+    borderColor: '#eee',
+    borderWidth: 1,
+    shadowOffset:{  width: 0,  height: 2,  },
+    shadowColor: 'rgba(0,0,0,0.3)',
+    shadowOpacity: 1.0,
+  },
 
   label: {
     fontSize: 16,
