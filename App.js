@@ -1,5 +1,5 @@
-import React from 'react'
-import { StyleSheet, Text, View, StatusBar } from 'react-native'
+import React, { Component } from 'react'
+import { View, StatusBar } from 'react-native'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
@@ -9,7 +9,8 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
-import { white, purple } from './utils/colors' 
+import { white, purple } from './utils/colors'
+import { setLocalNotification } from './utils/helpers'
 
 import reducer from './reducers'
 
@@ -18,7 +19,6 @@ import AddDeck from './screens/AddDeck'
 import Decks from './screens/Decks'
 import DeckView from './screens/DeckView'
 import Quiz from './screens/Quiz'
-
 
 import Constants from 'expo-constants'
 
@@ -110,15 +110,22 @@ const MainNav = () => (
   </Stack.Navigator>
 );
 
-export default function App() {
-  return (
-    <Provider store={createStore(reducer)}>
-      <View style={{flex: 1}}>
-        <NavigationContainer>
-          <FlashcardsStatusBar style="auto" />
-          <MainNav/>
-        </NavigationContainer>
-      </View>
-    </Provider>
-  );
+export default class App extends Component {
+
+  componentDidMount() {
+    setLocalNotification()
+  }
+
+  render() {
+    return (
+      <Provider store={createStore(reducer)}>
+        <View style={{flex: 1}}>
+          <NavigationContainer>
+            <FlashcardsStatusBar style="auto" />
+            <MainNav/>
+          </NavigationContainer>
+        </View>
+      </Provider>
+    )
+  }
 }

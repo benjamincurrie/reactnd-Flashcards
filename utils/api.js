@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage'
 
-export const STORAGE_KEY = 'Udacity:flashcards'
+export const STORAGE_KEY = 'UdacityFlashcards:decks'
 
 const sampleData = {
   Animals: {

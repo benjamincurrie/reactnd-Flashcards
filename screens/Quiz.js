@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import Button from '../components/Button'
 import { red, green } from '../utils/colors';
+import { setLocalNotification, clearLocalNotification } from '../utils/helpers'
 
 class Quiz extends Component {
 
@@ -23,11 +24,17 @@ class Quiz extends Component {
   }
 
   submitAnswer = (correct) => {
+    var i = this.state.i+1
     this.setState({
-      i: this.state.i+1,
+      i: i,
       correct: correct ? this.state.correct+1 : this.state.correct,
       showAnswer: false
     })
+
+    if (i === this.props.cards.length ) {
+      clearLocalNotification()
+        .then(setLocalNotification())
+    }
   }
 
   resetQuiz = () => {
@@ -38,7 +45,7 @@ class Quiz extends Component {
     })
   }
 
-  render(){
+  render() {
     const { id, name, cards, navigation } = this.props
     const { i, correct, showAnswer } = this.state
 
