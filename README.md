@@ -5,6 +5,8 @@ Author: Ben Currie
 ### Description
 An app that allows users to study collections of flashcards. The app will allow users to create different categories of flashcards called "decks", add flashcards to those decks, then take quizzes on those decks.
 
+Tested on Android (device) and iOS (Simulator)
+
 ### How to Install
 ```
 $ yarn install
