@@ -22,14 +22,20 @@ class AddDeck extends Component {
   
   submit = () => {
     const { name } = this.state
+    const id = name
     const deck = {
       name: name,
       cards: [],
     }
 
-    this.props.dispatch(addDeck(deck))
-    saveDeck(deck)
-    this.props.navigation.navigate("Decks");
+    saveDeck(id, deck)
+      .then((data) => {
+        this.props.dispatch(addDeck(id, deck))
+        this.props.navigation.navigate(
+          "DeckView",
+          { id: id }
+        )
+      })
   }
 
   render(){

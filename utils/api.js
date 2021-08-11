@@ -59,8 +59,8 @@ export function resetDecks () {
     })
 }
 
-export function saveDeck(deck) {
-  return AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({[deck.name]: deck}))
+export function saveDeck(id, deck) {
+  return AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({[id]: deck}))
 }
 
 export function deleteDeck(id) {

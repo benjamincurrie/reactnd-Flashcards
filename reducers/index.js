@@ -12,13 +12,13 @@ function decks(state = {}, action) {
           ...state,
           decks: {
             ...state.decks,
-            [action.deck.name]: action.deck
+            [action.id]: action.deck
           }
         }
       case REMOVE_DECK :
         var decks = state.decks
         delete decks[action.id]
-        
+
         return {
           ...state,
           decks: {
