@@ -5,41 +5,36 @@ export const STORAGE_KEY = 'Udacity:flashcards'
 const sampleData = {
   Animals: {
     name: 'Animals',
-    questions: [
+    cards: [
       {
         question: 'What is the fastest animal?',
-        answer: 'Cheetah',
-        correct: true
+        answer: 'Cheetah'
       },
       {
-        question: 'What is the largest animal?',
-        answer: 'Giraffe',
-        correct: false
+        question: 'What is the tallest animal?',
+        answer: 'Giraffe'
       }
     ]
   },
   French: {
     name: 'French',
-    questions: [
+    cards: [
       {
         question: 'Hello',
-        answer: 'Bonjour',
-        correct: true
+        answer: 'Bonjour'
       }
     ]
   },
   Geography: {
     name: 'Geography',
-    questions: [
+    cards: [
       {
         question: 'What is the Capital of Canada',
-        answer: 'Toronto',
-        correct: false
+        answer: 'Ottawa'
       },
       {
         question: 'Which hemisphere is Japan located',
-        answer: 'Northern',
-        correct: true
+        answer: 'Northern'
       }
     ]
   },
@@ -63,6 +58,20 @@ export function resetDecks () {
 
 export function saveDeck(deck) {
   return AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({[deck.name]: deck}))
+}
+
+export function addCard({ card, id }) {
+  fetchDecks()
+    .then((decks) =>{
+      return{
+        [id]: {
+          cards: decks[id].cards.concat([card])
+        }
+      }
+    })
+    .then((deck) =>{
+      AsyncStorage.mergeItem(DECK_STORAGE, JSON.stringify({[id]: deck}));
+    });
 }
 
 // export function removeDeck() {

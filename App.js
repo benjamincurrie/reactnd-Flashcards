@@ -89,6 +89,24 @@ const MainNav = () => (
           backgroundColor: purple,
         }
     }}/>
+    <Stack.Screen
+      name="Quiz"
+      component={Quiz}
+      options={{
+        headerTintColor: white,
+        headerStyle: {
+          backgroundColor: purple,
+        }
+    }}/>
+    <Stack.Screen
+      name="AddCard"
+      component={AddCard}
+      options={{
+        headerTintColor: white,
+        headerStyle: {
+          backgroundColor: purple,
+        }
+    }}/>
   </Stack.Navigator>
 );
 

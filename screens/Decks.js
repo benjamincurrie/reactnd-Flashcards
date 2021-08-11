@@ -31,24 +31,24 @@ class Decks extends Component {
     return(
       <ScrollView style={globalStyles.container}>
         <Text style={globalStyles.h1}>Decks</Text>
-        {decks && Object.keys(decks).map((key) =>{
-          const {name, questions } = decks[key]
+        {decks && Object.keys(decks).map((id) =>{
+          const { name, cards } = decks[id]
           return (
             <TouchableOpacity 
-            key={name}
+            key={id}
             onPress={() => this.props.navigation.navigate(
               "DeckView",
-              {name: name}
+              { id: id }
             )}>
               <Deck
                 name={name}
-                count={questions.length}
+                count={cards.length}
               />
             </TouchableOpacity>
             
           )
         })}
-        <Button onPress={this.clear} type='secondary'>Reset</Button>
+        <Button onPress={this.clear} type='text'>Reset</Button>
       </ScrollView>
     )
   }

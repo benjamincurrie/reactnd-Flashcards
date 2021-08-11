@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
-import { View, TouchableOpacity, Text, StyleSheet, Platform, TextInput } from 'react-native'
+import { View, Text, StyleSheet, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 
-import { Ionicons } from '@expo/vector-icons'
 import { addDeck } from '../actions'
 import { saveDeck } from '../utils/api'
 import globalStyles from '../utils/styles'
-import { purple, white } from '../utils/colors'
 
 import Button from '../components/Button'
 
-class AddDeck extends React.Component {
+class AddDeck extends Component {
 
   constructor(props) {
     super(props);
@@ -26,7 +24,7 @@ class AddDeck extends React.Component {
     const { name } = this.state
     const deck = {
       name: name,
-      questions: [],
+      cards: [],
     }
 
     this.props.dispatch(addDeck(deck))
