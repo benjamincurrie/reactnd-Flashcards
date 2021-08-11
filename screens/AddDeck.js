@@ -48,7 +48,7 @@ class AddDeck extends Component {
           onChangeText={this.handleNameChange}
           value={this.state.name}
         />
-        <Button onPress={this.submit}>Submit</Button>
+        <Button onPress={this.submit} disabled={this.state.name.length === 0}>Submit</Button>
       </View>
     );
   };

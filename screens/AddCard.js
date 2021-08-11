@@ -9,7 +9,7 @@ import Button from '../components/Button'
 
 class AddCard extends Component{
 
-  state = { name: '' }
+  state = { question: '', answer: '' }
 
   componentDidMount() {
     this.props.navigation.setOptions({
@@ -62,7 +62,10 @@ class AddCard extends Component{
           value={this.state.answer}
         />
 
-        <Button onPress={this.submit}>Submit</Button>
+        <Button
+          onPress={this.submit}
+          disabled={this.state.question.length === 0 || this.state.answer.length === 0}
+        >Submit</Button>
       </View>
     )
   }
