@@ -13,6 +13,11 @@ export default globalStyles = StyleSheet.create({
     fontWeight: '800',
     paddingBottom: 16
   },
+  h2: {
+    fontSize: 20,
+    fontWeight: '800',
+    paddingBottom: 8
+  },
   card: {
     backgroundColor: white,
     padding: 16,

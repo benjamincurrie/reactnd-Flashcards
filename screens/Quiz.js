@@ -53,6 +53,7 @@ class Quiz extends Component {
       <View style={globalStyles.container}>
         {i < cards.length ? (
           <View>
+            <Text style={{...globalStyles.h2, textAlign: 'center'}}>{cards.length - i} questions remaining</Text>
             <TouchableOpacity onPress={this.showAnswer} style={globalStyles.card}>
               <Text style={{...globalStyles.h1, textAlign: 'center'}}>{cards[i].question}</Text>
               {showAnswer ? (
